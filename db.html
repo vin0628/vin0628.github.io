@@ -14,11 +14,7 @@
         this.age = age;
       }
 
-      var stu1 = new Stu('Karl', 15);
-      var stu2 = new Stu('Nick', 17);
-      studentCollection.insert(stu1);
-      studentCollection.insert(stu2);
-
+      studentCollection.load();
       console.log( studentCollection.find().length );
       console.log( studentCollection.find()[0]['name'] );
 

@@ -1,28 +1,31 @@
 <html>
   <head>
     <script src="js/fdb-all.min.js">
+     
       
       var fdb = new ForerunnerDB();
-      var db = fdb.db("db")
-      
+      var db = fdb.db("OrangeApple");
+
       var studentCollection = db.collection('students');
-      var scoreCollection = db('student');
-      
-      function Stu(name,age,gender,id){
-        this.name = namae;
+      var scoreCollection = db.collection('scores');
+
+      function Stu(name, age) {
+        this.name = name;
         this.age = age;
-        this.gender = gender;
-        this.id = id;
       }
-      
-      var stu1 = new Stu('karl',15,'F',1);
-      var stu2 = new Stu('nick',16,'M',2);
-      
+
+      var stu1 = new Stu('Karl', 15);
+      var stu2 = new Stu('Nick', 17);
       studentCollection.insert(stu1);
       studentCollection.insert(stu2);
-      
-      console.log(studentCollection.find()[0]);
-      
+
+      console.log( studentCollection.find().length );
+      console.log( studentCollection.find()[0]['name'] );
+
+      for(var i = 0; i <= 10; i++) {
+        console.log(i);
+      }
+
     </script>
   </head>
   <body>

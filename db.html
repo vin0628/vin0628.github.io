@@ -15,8 +15,13 @@
       }
 
       studentCollection.load();
-      console.log( studentCollection.find().length );
-      console.log( studentCollection.find()[0]['name'] );
+      
+      function after_load() {
+        alert(studentCollection.find().length)
+        alert(studentCollection.find()[0]['name'])
+      }
+      
+      studentCollection.load(after_load)
 
       for(var i = 0; i <= 10; i++) {
         console.log(i);

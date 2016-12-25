@@ -14,19 +14,32 @@
         this.age = age;
       }
 
-      studentCollection.load();
+      studentCollection.load(after_load);
       
       function after_load() {
-        alert(studentCollection.find().length)
-        alert(studentCollection.find()[0]['name'])
+       
+        for(var i = 0; i <= studentCollection.find().length; i++) {
+          console.log(studentCollection.find()[i]['name']);
+        }
       }
       
       studentCollection.load(after_load)
 
-      for(var i = 0; i <= 10; i++) {
-        console.log(i);
-      }
-
+      <table>
+        <thead>
+            <tr>
+                <td>id</td>
+                <td>姓名</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Orange</td>
+            </tr>
+        </tbody>
+    </table>
+      
     </script>
   </head>
   <body>

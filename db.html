@@ -1,8 +1,8 @@
 <html>
   <head>
     <script src="js/fdb-all.min.js">
-     src="js/jquery-1.12.2.min (1).js"
-     src="js/bootstrap.min.js" 
+    src="js/jquery-1.12.2.min (1).js"
+    src="js/bootstrap.min.js" 
      
 
     </script>
@@ -19,17 +19,15 @@
         this.age = age;
         this.id = id;
       }
-
+      var load_count = 0
       studentCollection.load(after_load);
-      scoreCollection.load(after_load);
-        var load_count = 0
-        
+      scoreCollection.load(after_load);        
       
       function after_load() {
        load_count += 1
         if(load_count = 2){
-        for(var i = 0; i <= studentCollection.find().length -1; i++) {
-          console.log(studentCollection.find()[i]['name']);
+          for(var i = 0; i <= studentCollection.find().length -1; i++) {
+            console.log(studentCollection.find()[i]['name']);
           }
         }
       }

@@ -1,46 +1,41 @@
 <html>
   <head>
     <script src="js/fdb-all.min.js">
+     src="js/jquery-1.12.2.min (1).js"
+     src="js/bootstrap.min.js" 
      
-      
+
+    </script>
+      <script>
+         
       var fdb = new ForerunnerDB();
       var db = fdb.db("OrangeApple");
 
       var studentCollection = db.collection('students');
       var scoreCollection = db.collection('scores');
 
-      function Stu(name, age) {
+      function Stu(id,name, age) {
         this.name = name;
         this.age = age;
+        this.id = id;
       }
 
       studentCollection.load(after_load);
+      scoreCollection.load(after_load);
+        var load_count = 0
+        
       
       function after_load() {
-       
-        for(var i = 0; i <= studentCollection.find().length; i++) {
+       load_count += 1
+        if(load_count = 2){
+        for(var i = 0; i <= studentCollection.find().length -1; i++) {
           console.log(studentCollection.find()[i]['name']);
+          }
         }
       }
       
-      studentCollection.load(after_load)
 
-      <table>
-        <thead>
-            <tr>
-                <td>id</td>
-                <td>姓名</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Orange</td>
-            </tr>
-        </tbody>
-    </table>
-      
-    </script>
+      </script>  
   </head>
   <body>
     

@@ -44,7 +44,9 @@ function manual_insert_data() {
 
 function after_load() {
   var stus = studentCollection.find();
-
+  var stus_ size= studentCollection.find(studentCollection.length);
+  console.log(stus_ size)
+  
   for(var i = 0; i < stus.length; i++) {
       $("table tbody").append("<tr><td>" + stus[i]["name"] + "</td><td>" + stus[i]["age"] + "</td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default\">Detail</a></td></tr>");
    }

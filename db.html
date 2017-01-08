@@ -44,8 +44,8 @@ function manual_insert_data() {
 
 function after_load() {
   var stus = studentCollection.find();
-  var stus_ size= studentCollection.find(studentCollection.length);
-  console.log(stus_ size)
+  var stus_size= stus.length;
+  console.log(stus[stus_size - 1]["id"]);
   
   for(var i = 0; i < stus.length; i++) {
       $("table tbody").append("<tr><td>" + stus[i]["name"] + "</td><td>" + stus[i]["age"] + "</td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default\">Detail</a></td></tr>");
@@ -61,7 +61,7 @@ function after_load() {
   <input type="text" name="age"><br>
     <button type="button">確認</button>
     
-    <table class="table table-hover">
+    <table class="table table-hover"> 
         <thead>
             <tr>
                 <td>id</td>

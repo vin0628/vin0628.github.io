@@ -52,15 +52,24 @@ function after_load() {
    }
   }     
 }
+  $("#subemit").click(function(){
+    var name = $("#name").val()
+    var age = $("#age").val()
+    var stus = studentCollection.find();
+    var stus_size= stus.length;
+    var id = stus[stus_size - 1]["id"] + 1;
+    studentCollection.insert(new Stu(id,name ,age));
+    studentCollection.save();
+    $("table tbody").append("<tr><td>" + stus[i]["name"] + "</td><td>" + stus[i]["age"] + "</td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default\">Detail</a></td></tr>");
+   })
       </script>  
   </head>
   <body>
     name:<br>
-  <input type="text" name="name"><br>
+  <input type="text" id="name"><br>
      age:<br>
-  <input type="text" name="age"><br>
-    <button type="button">確認</button>
-    $("btn").click()
+  <input type="text" id="age"><br>
+    <button type="button" id="subemit">確認</button>
     
     <table class="table table-hover"> 
         <thead>

@@ -13,24 +13,41 @@
       var studentCollection = db.collection('students');
       var scoreCollection = db.collection('scores');
 
-      function Stu(id,name, age) {
-        this.name = name;
-        this.age = age;
-        this.id = id;
-      }
-      var load_count = 0
-      studentCollection.load(after_load);
-      scoreCollection.load(after_load);        
-      
-      function after_load() {
-       load_count += 1
-        if(load_count = 2){
-          for(var i = 0; i <= studentCollection.find().length -1; i++) {
-            console.log(studentCollection.find()[i]['name']);
-            $("tbody").append("<tr><td>"+studentCollection.find()[i]['name']+"</td><td>"+studentCollection.find()[i]['id']+'</td><td><a class = "btn btn-default" data-id="' + 1 + '">Detail</a></td>></tr>')
-          }
-        }
-      }
+      function Stu(stuid, name, age) {
+  this.stuid = stuid;
+  this.name = name;
+  this.age = age;
+}
+
+function scores(stuid,subject ,scores) {
+  this.stuid = stuid;
+  this.subject = subject;
+  this.scores = scores;
+}
+
+function manual_insert_data() {
+  studentCollection.insert(new Stu(1, "Karl", 18));
+  studentCollection.insert(new Stu(2, "Michael", 20));
+  studentCollection.insert(new Stu(3, "Andy", 17));
+  
+  studentCollection.save();
+
+}
+
+function manual_insert_data() {
+  scoresCollection.insert(new scores(1, "English", 18));
+  scoresCollection.insert(new scores(2, "English", 20));
+  scoresCollection.insert(new scores(3, "English", 17));
+  
+  scoresCollection.save();
+
+
+function after_load() {
+  var stus = studentCollection.find();
+
+  for(var i = 0; i < stus.length; i++) {
+      $("table tbody").append("<tr><td>" + stus[i]["name"] + "</td><td>" + stus[i]["age"] + "</td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default\">Detail</a></td></tr>");
+  }
      
 
       </script>  

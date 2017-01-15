@@ -65,8 +65,11 @@ function manual_insert_data() {
   scoresCollection.save();
 }
  $("body").on("click", ".delete", function(){
-   $(this).attr("data-id")
-   alert($(this).attr("data-id"));
+   var id = $(this).attr("data-id")/1;
+  studentCollection.remove({
+    _id: id
+    studentCollection.save();
+});
  });
  function after_load() {
   var stus = studentCollection.find();

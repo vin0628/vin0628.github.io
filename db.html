@@ -70,7 +70,7 @@ function manual_insert_data() {
   console.log(stus[stus_size - 1]["id"]);
   
   for(var i = 0; i < stus.length; i++) {
-      $("table tbody").append("<tr><td>" + stus[i]["name"] + "</td><td>" + stus[i]["age"] + "</td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default\">Detail</a></td><td><a data-id=\"" + id + "\" class=\"btn btn-default\">Delete</a></td></tr>");
+      $("table tbody").append("<tr><td>" + stus[i]["name"] + "</td><td>" + stus[i]["age"] + "</td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default\">Detail</a></td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default\">Delete</a></td></tr>");
     }
   }
   studentCollection.load(after_load);

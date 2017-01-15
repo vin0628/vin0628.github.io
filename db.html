@@ -64,18 +64,19 @@ function manual_insert_data() {
   scoresCollection.insert(new scores(3, "English", 17));
   
   scoresCollection.save();
-
-
-function after_load() {
+}
+ function after_load() {
   var stus = studentCollection.find();
   var stus_size= stus.length;
   console.log(stus[stus_size - 1]["id"]);
   
   for(var i = 0; i < stus.length; i++) {
       $("table tbody").append("<tr><td>" + stus[i]["name"] + "</td><td>" + stus[i]["age"] + "</td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default\">Detail</a></td></tr>");
-   }
-  }     
-}
+    }
+  }
+  studentCollection.load(after_load);
+  scoreCollection.load();
+
   $("#subemit").click(function(){
     var name = $("#name").val()
     var age = $("#age").val()

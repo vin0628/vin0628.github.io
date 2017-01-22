@@ -82,7 +82,7 @@ function manual_insert_data() {
    $("#changeage").val(stu.age)
    $("#modal").modal("show")
 });
- $("body").on("click", ".savechange", function(){
+ $("body").on("click", "#savechange", function(){
    var id = $(this).attr("data-id")/1;
    var stu = studentCollection.find({id: id})[0]
    $("#changename").val()

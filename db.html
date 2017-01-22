@@ -78,6 +78,7 @@ function manual_insert_data() {
    var id = $(this).attr("data-id")/1;d.
    studentCollection.find({id: 1})[0].name
   studentCollection.save();
+   $("#modal").modal("show")
 });
        
  function after_load() {

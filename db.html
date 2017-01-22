@@ -90,6 +90,8 @@ function manual_insert_data() {
    studentCollection.update({id:g_stu_id}
    ,{name:$("#changename").val(),age:$("#changeage").val()})
    studentCollection.save();
+   $("table tbody").html("")
+   after_load()
    $("#modal").modal("hide")
 });
        

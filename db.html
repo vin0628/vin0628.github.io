@@ -73,13 +73,24 @@ function manual_insert_data() {
   studentCollection.save();
    $(this).closest("tr").remove()
 });
-       
+   var g_stu_id;    
  $("body").on("click", ".change", function(){
    var id = $(this).attr("data-id")/1;
    var stu = studentCollection.find({id: id})[0]
+   g_stu_id = id;
    $("#changename").val(stu.name)
    $("#changeage").val(stu.age)
    $("#modal").modal("show")
+});
+ $("body").on("click", ".savechange", function(){
+   var id = $(this).attr("data-id")/1;
+   var stu = studentCollection.find({id: id})[0]
+   $("#changename").val()
+   $("#changeage").val()
+   studentCollection.update({id:g_stu_id}
+   ,{name:$("#changename").val(),age:$("#changeage").val()})
+   studentCollection.save();
+   $("#modal").modal("hide")
 });
        
  function after_load() {
@@ -120,7 +131,7 @@ function manual_insert_data() {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" id="savechange">Save changes</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

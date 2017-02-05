@@ -119,6 +119,10 @@ function manual_insert_data() {
     studentCollection.save();
     $("table tbody").append("<tr><td>" + name + "</td><td>"+age+"</td><td><a data-id=\"" + id + "\" class=\"btn btn-default\">Detail</a></td><td><a data-id=\"" + id + "\" class=\"btn btn-default delete\">Delete</a></td><td><a data-id=\"" + id + "\" class=\"btn btn-default change\">change</a></td></tr>");
    })
+  $("#search_subemit").click(function(){
+      var search = $("#search").val()
+      console.log(studentCollection.find({age:{$gte:search}}))
+   });
       </script> 
     <div id="modal" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">

@@ -1,3 +1,4 @@
+
 <html>
   <head>
     <script src="js/fdb-all.min.js"></script>
@@ -34,31 +35,25 @@
          
       var fdb = new ForerunnerDB();
       var db = fdb.db("OrangeApple");
-
       var studentCollection = db.collection('students');
       var scoreCollection = db.collection('scores');
-
       function Stu(stuid, name, age) {
   this.id = stuid;
   this.name = name;
   this.age = age;
 }
-
 function scores(stuid,subject ,scores) {
   this.stuid = stuid;
   this.subject = subject;
   this.scores = scores;
 }
-
 function manual_insert_data() {
   studentCollection.insert(new Stu(1, "Karl", 18));
   studentCollection.insert(new Stu(2, "Michael", 20));
   studentCollection.insert(new Stu(3, "Andy", 17));
   
   studentCollection.save();
-
 }
-
 function manual_insert_data() {
   scoresCollection.insert(new scores(1, "English", 18));
   scoresCollection.insert(new scores(2, "English", 20));
@@ -108,7 +103,6 @@ function manual_insert_data() {
   }
   studentCollection.load(after_load);
   scoreCollection.load();
-
   $("#subemit").click(function(){
     var name = $("#name").val()
     var age = $("#age").val()
@@ -119,10 +113,12 @@ function manual_insert_data() {
     studentCollection.save();
     $("table tbody").append("<tr><td>" + name + "</td><td>"+age+"</td><td><a data-id=\"" + id + "\" class=\"btn btn-default\">Detail</a></td><td><a data-id=\"" + id + "\" class=\"btn btn-default delete\">Delete</a></td><td><a data-id=\"" + id + "\" class=\"btn btn-default change\">change</a></td></tr>");
    })
-  $("#search_subemit").click(function(){
-      var search = $("#search").val()
+
+   $("#search_subemit").click(function(){
+      var search = $("#search").val()/1
       console.log(studentCollection.find({age:{$gte:search}}))
    });
+   
       </script> 
     <div id="modal" class="modal fade" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
@@ -146,4 +142,3 @@ function manual_insert_data() {
 </div><!-- /.modal -->
   </body>
 
-</html>

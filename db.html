@@ -14,7 +14,10 @@
      age:<br>
   <input type="text" id="age"><br>
     <button type="button" id="subemit">確認</button><br>
-    <input type="text" id="search"><br>
+    大於：<br>
+    <input type="text" id="searchgt"><br>
+    小於：<br>
+    <input type="text" id="searchlt"><br>
     <button type="button" id="search_subemit">搜尋</button>
     
     <table class="table table-hover"> 
@@ -115,8 +118,9 @@ function manual_insert_data() {
    })
 
    $("#search_subemit").click(function(){
-      var search = $("#search").val()/1
-      var stus = studentCollection.find({age:{$gte:search}});
+      var searchgt = $("#searchgt").val()/1
+      var searchlt = $("#searchlt").val()/1
+      var stus = studentCollection.find({age:{$gte:searchgt,$lte:searchlt}});
       $("table tbody").html("");
       for(var i = 0; i < stus.length; i++) {
         $("table tbody").append("<tr><td>" + stus[i]["name"] + "</td><td>" + stus[i]["age"] + "</td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default\">Detail</a></td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default delete\">Delete</a></td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default change\">change</a></td></tr>");

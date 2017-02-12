@@ -25,6 +25,7 @@
             <tr>
                 <td>姓名</td>
                 <td>age</td>
+                <td>班級</td>
             </tr>
         </thead>
         <tbody>
@@ -118,13 +119,20 @@ function manual_insert_data() {
    })
 
    $("#search_subemit").click(function(){
-      var searchgt = $("#searchgt").val()/1
-      var searchlt = $("#searchlt").val()/1
-      if(searchgt ==0 && searchlt == 0){
+      var searchgte = $("#searchgte").val()/1
+      var searchlte = $("#searchlte").val()/1
+      if(searchgte ==0 && searchlte == 0){
         var stus = studentCollection.find();
+      }else if(searchgte ==0){
+        var stus = studentCollection.find({age:{$lte:searchlte}});
+      }else if(searchlte == 0){
+
       }else{
         var stus = studentCollection.find({age:{$gte:searchgt,$lte:searchlt}});
-      } 
+      }
+      
+
+      
       
       $("table tbody").html("");
       for(var i = 0; i < stus.length; i++) {

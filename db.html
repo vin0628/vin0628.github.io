@@ -143,7 +143,7 @@ function manual_insert_data() {
       }
       console.log(active_room);
       if(searchgte ==0 && searchlte == 0){
-        var stus = studentCollection.find( room:{$in:active_room});
+        var stus = studentCollection.find({ room:{$in:active_room} });
       }else if(searchgte ==0){
         var stus = studentCollection.find({ age:{$lte:searchlte}, room:{$in:active_room} });
       }else if(searchlte == 0){

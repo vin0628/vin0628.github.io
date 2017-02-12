@@ -133,15 +133,25 @@ function manual_insert_data() {
    $("#search_subemit").click(function(){
       var searchgte = $("#searchgte").val()/1
       var searchlte = $("#searchlte").val()/1
-      if(searchgte ==0 && searchlte == 0){
-        var stus = studentCollection.find();
-      }else if(searchgte ==0){
-        var stus = studentCollection.find({age:{$lte:searchlte}});
-      }else if(searchlte == 0){
+      var room_html = $(".room");
+      var active_room = [];
 
-      }else{
-        var stus = studentCollection.find({age:{$gte:searchgt,$lte:searchlt}});
+      for(var i=0; i<room_html.length; i++){
+        if($(room_html[i]).prop("checked") == true){
+          actine_room.push($(room_html[i]).val());
+        }
       }
+      console.log(active_room);
+      if(searchgte ==0 && searchlte == 0){
+        var stus = studentCollection.find( room:{$in:active_room});
+      }else if(searchgte ==0){
+        var stus = studentCollection.find({ age:{$lte:searchlte}, room:{$in:active_room} });
+      }else if(searchlte == 0){
+        var stus = studentCollection.find({age:{$lte:searchgte}, room:{$in:active_room}});
+      }else{
+        var stus = studentCollection.find({age:{$gte:searchgt,$lte:searchlt}, room:{$in:active_room}});
+      }
+
       
 
       

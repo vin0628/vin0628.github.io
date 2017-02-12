@@ -14,7 +14,7 @@
      age:<br>
   <input type="text" id="age"><br>
   class:<br>
-  <select id="rooms" >
+  <select id="room" >
     <option value = "A">A</option>
     <option value = "B">B</option>
     </select><br>
@@ -116,12 +116,13 @@ function manual_insert_data() {
   $("#subemit").click(function(){
     var name = $("#name").val()
     var age = $("#age").val()
+    var room = $("#room").val()
     var stus = studentCollection.find();
     var stus_size= stus.length;
     var id = stus[stus_size - 1]["id"] + 1;
-    studentCollection.insert(new Stu(id ,name ,age));
+    studentCollection.insert(new Stu(id ,name ,age ,room));
     studentCollection.save();
-    $("table tbody").append("<tr><td>" + name + "</td><td>"+age+"</td><td><a data-id=\"" + id + "\" class=\"btn btn-default\">Detail</a></td><td><a data-id=\"" + id + "\" class=\"btn btn-default delete\">Delete</a></td><td><a data-id=\"" + id + "\" class=\"btn btn-default change\">change</a></td></tr>");
+    $("table tbody").append("<tr><td>" + name + "</td><td>"+age+"</td><td>"+room+"</td><td><a data-id=\"" + id + "\" class=\"btn btn-default\">Detail</a></td><td><a data-id=\"" + id + "\" class=\"btn btn-default delete\">Delete</a></td><td><a data-id=\"" + id + "\" class=\"btn btn-default change\">change</a></td></tr>");
    })
 
    $("#search_subemit").click(function(){

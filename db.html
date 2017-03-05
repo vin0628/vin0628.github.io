@@ -52,6 +52,8 @@
       var db = fdb.db("OrangeApple");
       var studentCollection = db.collection('students');
       var scoreCollection = db.collection('scores');
+      var teachersCollection = db.collection('teachers');
+      var parentsCollection = db.collection('parents');
 function Stu(stuid, name, age, room) {
   this.id = stuid;
   this.name = name;
@@ -62,6 +64,12 @@ function scores(stuid,subject ,scores) {
   this.stuid = stuid;
   this.subject = subject;
   this.scores = scores;
+}
+function teachers(name) {
+  this.name = name;
+}
+function parents(name) {
+  this.name = name;
 }
 function manual_insert_data() {
   studentCollection.insert(new Stu(1, "Karl", 18, "A"));
@@ -75,8 +83,17 @@ function manual_insert_data() {
   scoresCollection.insert(new scores(3, "English", 17));
   
   scoresCollection.save();
-}
-       
+
+  teachersCollect.ioninsert(new teachers(AA));
+  teachersCollect.ioninsert(new teachers(BB));
+  
+  teachersCollection.save();
+
+  parentsCollect.ioninsert(new parents(C));
+  parentssCollect.ioninsert(new parents(D));
+
+  parentssCollection.save();
+
  $("body").on("click", ".delete", function(){
    var id = $(this).attr("data-id")/1;
   studentCollection.remove({

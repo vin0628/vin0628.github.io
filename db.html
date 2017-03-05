@@ -65,12 +65,7 @@ function scores(stuid,subject ,scores) {
   this.subject = subject;
   this.scores = scores;
 }
-function teachers(name) {
-  this.name = name;
-}
-function parents(name) {
-  this.name = name;
-}
+
 function manual_insert_data() {
   studentCollection.insert(new Stu(1, "Karl", 18, "A"));
   studentCollection.insert(new Stu(2, "Michael", 20, "A"));
@@ -84,15 +79,7 @@ function manual_insert_data() {
   
   scoresCollection.save();
 
-  teachersCollect.insert(new teachers(AA));
-  teachersCollect.insert(new teachers(BB));
-  
-  teachersCollection.save();
-
-  parentsCollect.insert(new parents(C));
-  parentsCollect.insert(new parents(D));
-
-  parentssCollection.save();
+ 
 
  $("body").on("click", ".delete", function(){
    var id = $(this).attr("data-id")/1;

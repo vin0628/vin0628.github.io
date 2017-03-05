@@ -60,30 +60,31 @@
 //       var scoreCollection = db.collection('scores');
 //       var teachersCollection = db.collection('teachers');
 //       var parentsCollection = db.collection('parents');
-// function Stu(stuid, name, age, room) {
-//   this.id = stuid;
-//   this.name = name;
-//   this.age = age;
-//   this.room = room;
-// }
+function Stu(stuid, name, age, room) {
+  this.id = stuid;
+  this.name = name;
+  this.age = age;
+  this.room = room;
+}
 // function scores(stuid,subject ,scores) {
 //   this.stuid = stuid;
 //   this.subject = subject;
 //   this.scores = scores;
 // }
 
-// function manual_insert_data() {
-//   studentCollection.insert(new Stu(1, "Karl", 18, "A"));
-//   studentCollection.insert(new Stu(2, "Michael", 20, "A"));
-//   studentCollection.insert(new Stu(3, "Andy", 17, "A"));
+function manual_insert_data() {
+  studentCollection.insert(new Stu(1, "Karl", 18, "A"));
+  studentCollection.insert(new Stu(2, "Michael", 20, "A"));
+  studentCollection.insert(new Stu(3, "Andy", 17, "A"));
   
-//   studentCollection.save();
+  studentCollection.save();
 
-//   scoresCollection.insert(new scores(1, "English", 18));
-//   scoresCollection.insert(new scores(2, "English", 20));
-//   scoresCollection.insert(new scores(3, "English", 17));
+  scoresCollection.insert(new scores(1, "English", 18));
+  scoresCollection.insert(new scores(2, "English", 20));
+  scoresCollection.insert(new scores(3, "English", 17));
   
-//   scoresCollection.save();
+  scoresCollection.save();
+}
 
  
 

@@ -122,17 +122,17 @@ function manual_insert_data() {
  }
   studentCollection.load(after_load);
   scoreCollection.load();
-  $("#subemit").click(function(){
-    var name = $("#name").val()
-    var age = $("#age").val()
-    var room = $("#room").val()
-    var stus = studentCollection.find();
-    var stus_size= stus.length;
-    var id = stus[stus_size - 1]["id"] + 1;
-    studentCollection.insert(new Stu(id ,name ,age ,room));
-    studentCollection.save();
-    $("table tbody").append("<tr><td>" + name + "</td><td>"+age+"</td><td>"+room+"</td><td><a data-id=\"" + id + "\" class=\"btn btn-default\">Detail</a></td><td><a data-id=\"" + id + "\" class=\"btn btn-default delete\">Delete</a></td><td><a data-id=\"" + id + "\" class=\"btn btn-default change\">change</a></td></tr>");
-   })
+//   $("#subemit").click(function(){
+//     var name = $("#name").val()
+//     var age = $("#age").val()
+//     var room = $("#room").val()
+//     var stus = studentCollection.find();
+//     var stus_size= stus.length;
+//     var id = stus[stus_size - 1]["id"] + 1;
+//     studentCollection.insert(new Stu(id ,name ,age ,room));
+//     studentCollection.save();
+//     $("table tbody").append("<tr><td>" + name + "</td><td>"+age+"</td><td>"+room+"</td><td><a data-id=\"" + id + "\" class=\"btn btn-default\">Detail</a></td><td><a data-id=\"" + id + "\" class=\"btn btn-default delete\">Delete</a></td><td><a data-id=\"" + id + "\" class=\"btn btn-default change\">change</a></td></tr>");
+//    })
 
 //    $("#search_subemit").click(function(){
 //       var searchgte = $("#searchgt").val()/1;

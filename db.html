@@ -57,20 +57,20 @@
       var fdb = new ForerunnerDB();
       var db = fdb.db("OrangeApple");
       var studentCollection = db.collection('students');
-//       var scoreCollection = db.collection('scores');
-//       var teachersCollection = db.collection('teachers');
-//       var parentsCollection = db.collection('parents');
+      var scoreCollection = db.collection('scores');
+      var teachersCollection = db.collection('teachers');
+      var parentsCollection = db.collection('parents');
 function Stu(stuid, name, age, room) {
   this.id = stuid;
   this.name = name;
   this.age = age;
   this.room = room;
 }
-// function scores(stuid,subject ,scores) {
-//   this.stuid = stuid;
-//   this.subject = subject;
-//   this.scores = scores;
-// }
+function scores(stuid,subject ,scores) {
+  this.stuid = stuid;
+  this.subject = subject;
+  this.scores = scores;
+}
 
 function manual_insert_data() {
   studentCollection.insert(new Stu(1, "Karl", 18, "A"));
@@ -88,87 +88,87 @@ function manual_insert_data() {
 
  
 
-//  $("body").on("click", ".delete", function(){
-//    var id = $(this).attr("data-id")/1;
-//   studentCollection.remove({
-//     id: id
-//   })
-//   studentCollection.save();
-//    $(this).closest("tr").remove()
-// });
-//    var g_stu_id;    
-//  $("body").on("click", ".change", function(){
-//    var id = $(this).attr("data-id")/1;
-//    var stu = studentCollection.find({id: id})[0]
-//    g_stu_id = id;
-//    $("#changename").val(stu.name)
-//    $("#changeage").val(stu.age)
-//    $("#modal").modal("show")
-// });
-//  $("body").on("click", "#savechange", function(){
-//    var id = $(this).attr("data-id")/1;
-//    var stu = studentCollection.find({id: id})[0]
-//    $("#changename").val()
-//    $("#changeage").val()
-//    studentCollection.update({id:g_stu_id}
-//    ,{name:$("#changename").val(),age:$("#changeage").val()})
-//    studentCollection.save();
-//    $("table tbody").html("")
-//    after_load()
-//    $("#modal").modal("hide")
-// });
+ $("body").on("click", ".delete", function(){
+   var id = $(this).attr("data-id")/1;
+  studentCollection.remove({
+    id: id
+  })
+  studentCollection.save();
+   $(this).closest("tr").remove()
+});
+   var g_stu_id;    
+ $("body").on("click", ".change", function(){
+   var id = $(this).attr("data-id")/1;
+   var stu = studentCollection.find({id: id})[0]
+   g_stu_id = id;
+   $("#changename").val(stu.name)
+   $("#changeage").val(stu.age)
+   $("#modal").modal("show")
+});
+ $("body").on("click", "#savechange", function(){
+   var id = $(this).attr("data-id")/1;
+   var stu = studentCollection.find({id: id})[0]
+   $("#changename").val()
+   $("#changeage").val()
+   studentCollection.update({id:g_stu_id}
+   ,{name:$("#changename").val(),age:$("#changeage").val()})
+   studentCollection.save();
+   $("table tbody").html("")
+   after_load()
+   $("#modal").modal("hide")
+});
        
-//  function after_load() {
-//    var stus = studentCollection.find();
-//    var stus_size= stus.length;
+ function after_load() {
+   var stus = studentCollection.find();
+   var stus_size= stus.length;
   
   
-//    for(var i = 0; i < stus.length; i++) {
-//       $("table tbody").append("<tr><td>" + stus[i]["name"] + "</td><td>" + stus[i]["age"] + "</td><td>" + stus[i]["room"] + "</td><td><a data-id=\"" + stus[i]["id"] +"\" class=\"btn btn-default\">Detail</a></td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default delete\">Delete</a></td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default change\">change</a></td></tr>");
-//    }
-//  }
-//   studentCollection.load(after_load);
-//   scoreCollection.load();
-//   $("#subemit").click(function(){
-//     var name = $("#name").val()
-//     var age = $("#age").val()
-//     var room = $("#room").val()
-//     var stus = studentCollection.find();
-//     var stus_size= stus.length;
-//     var id = stus[stus_size - 1]["id"] + 1;
-//     studentCollection.insert(new Stu(id ,name ,age ,room));
-//     studentCollection.save();
-//     $("table tbody").append("<tr><td>" + name + "</td><td>"+age+"</td><td>"+room+"</td><td><a data-id=\"" + id + "\" class=\"btn btn-default\">Detail</a></td><td><a data-id=\"" + id + "\" class=\"btn btn-default delete\">Delete</a></td><td><a data-id=\"" + id + "\" class=\"btn btn-default change\">change</a></td></tr>");
-//    })
+   for(var i = 0; i < stus.length; i++) {
+      $("table tbody").append("<tr><td>" + stus[i]["name"] + "</td><td>" + stus[i]["age"] + "</td><td>" + stus[i]["room"] + "</td><td><a data-id=\"" + stus[i]["id"] +"\" class=\"btn btn-default\">Detail</a></td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default delete\">Delete</a></td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default change\">change</a></td></tr>");
+   }
+ }
+  studentCollection.load(after_load);
+  scoreCollection.load();
+  $("#subemit").click(function(){
+    var name = $("#name").val()
+    var age = $("#age").val()
+    var room = $("#room").val()
+    var stus = studentCollection.find();
+    var stus_size= stus.length;
+    var id = stus[stus_size - 1]["id"] + 1;
+    studentCollection.insert(new Stu(id ,name ,age ,room));
+    studentCollection.save();
+    $("table tbody").append("<tr><td>" + name + "</td><td>"+age+"</td><td>"+room+"</td><td><a data-id=\"" + id + "\" class=\"btn btn-default\">Detail</a></td><td><a data-id=\"" + id + "\" class=\"btn btn-default delete\">Delete</a></td><td><a data-id=\"" + id + "\" class=\"btn btn-default change\">change</a></td></tr>");
+   })
 
-//    $("#search_subemit").click(function(){
-//       var searchgte = $("#searchgt").val()/1;
-//       var searchlte = $("#searchlt").val()/1;
-//       var room_html = $(".room");
-//       var active_room = [];
+   $("#search_subemit").click(function(){
+      var searchgte = $("#searchgt").val()/1;
+      var searchlte = $("#searchlt").val()/1;
+      var room_html = $(".room");
+      var active_room = [];
 
-//       for(var i=0; i<room_html.length; i++){
-//         if($(room_html[i]).prop("checked") == true){
-//           active_room.push($(room_html[i]).val());
-//         }
-//       }
-//       console.log(active_room);
-//       if(searchgte ==0 && searchlte == 0){
-//         console.log("A");
-//         var stus = studentCollection.find({ room:{$in:active_room} });
-//       }else if(searchgte ==0){
-//         var stus = studentCollection.find({ age:{$lte:searchlte}, room:{$in:active_room} });
-//       }else if(searchlte == 0){
-//         var stus = studentCollection.find({age:{$lte:searchgte}, room:{$in:active_room}});
-//       }else{
-//         var stus = studentCollection.find({age:{$gte:searchgt,$lte:searchlt}, room:{$in:active_room}});
-//       }
-//       console.log(stus);
-//       $("table tbody").html("");
-//       for(var i = 0; i < stus.length; i++) {
-//         $("table tbody").append("<tr><td>" + stus[i]["name"] + "</td><td>" + stus[i]["age"] + "</td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default\">Detail</a></td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default delete\">Delete</a></td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default change\">change</a></td></tr>");
-//       }
-//    });
+      for(var i=0; i<room_html.length; i++){
+        if($(room_html[i]).prop("checked") == true){
+          active_room.push($(room_html[i]).val());
+        }
+      }
+      console.log(active_room);
+      if(searchgte ==0 && searchlte == 0){
+        console.log("A");
+        var stus = studentCollection.find({ room:{$in:active_room} });
+      }else if(searchgte ==0){
+        var stus = studentCollection.find({ age:{$lte:searchlte}, room:{$in:active_room} });
+      }else if(searchlte == 0){
+        var stus = studentCollection.find({age:{$lte:searchgte}, room:{$in:active_room}});
+      }else{
+        var stus = studentCollection.find({age:{$gte:searchgt,$lte:searchlt}, room:{$in:active_room}});
+      }
+      console.log(stus);
+      $("table tbody").html("");
+      for(var i = 0; i < stus.length; i++) {
+        $("table tbody").append("<tr><td>" + stus[i]["name"] + "</td><td>" + stus[i]["age"] + "</td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default\">Detail</a></td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default delete\">Delete</a></td><td><a data-id=\"" + stus[i]["id"] + "\" class=\"btn btn-default change\">change</a></td></tr>");
+      }
+   });
    
    
       </script> 
